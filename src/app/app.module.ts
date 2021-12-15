@@ -7,6 +7,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { IonicStorageModule } from "@ionic/storage-angular";
+
 // Import Angular's httpClientModule
 import { HttpClientModule } from "@angular/common/http";
 import { LayoutPageModule } from './layout/layout.module';
@@ -14,7 +16,7 @@ import { LayoutPageModule } from './layout/layout.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, LayoutPageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, LayoutPageModule, IonicStorageModule.forRoot()],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

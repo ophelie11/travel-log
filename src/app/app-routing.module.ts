@@ -26,6 +26,10 @@ const routes: Routes = [
         },
         loadChildren: () => import('./auth-page/auth-page.module').then(m => m.AuthPagePageModule)
       },
+      {
+        path: "profil",
+        loadChildren: () => import('./profil/profil.module').then(m => m.ProfilPageModule)
+      },
       //default route
       {
         path: "",
@@ -33,6 +37,10 @@ const routes: Routes = [
         pathMatch: "full",
       }
     ]
+  },
+  {
+    path: 'profil',
+    loadChildren: () => import('./profil/profil.module').then( m => m.ProfilPageModule)
   },
 ];
 @NgModule({
