@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-button>
+        <ion-img [src]=""></ion-img>
+      </ion-button>
+    </ion-title>
+    <ion-button *ngIf="!isLoginLayout">
+      <ion-icon name="person-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+
+</ion-content>
+
+
+
+
+<!--
+  carte + logo dans les 2
+  dans home : bouton profil, carré blanc
+  dans login : les 2 boutons créer un compte et se connecter
+-->
