@@ -22,7 +22,7 @@ export class RegisterPage {
    * If true, it means that the authentication API has return a failed response
    * (probably because the name or password is incorrect).
    */
-  loginError: boolean;
+  registerError: boolean;
 
   constructor(private auth: AuthService, private router: Router) {
     this.authRequest = {
@@ -44,10 +44,10 @@ export class RegisterPage {
     this.registerError = false;
 
     // Perform the authentication request to the API.
-    this.auth.logIn$(this.authRequest).subscribe({
+    this.auth.register(this.authRequest).subscribe({
       next: () => this.router.navigateByUrl("/"),
       error: (err) => {
-        this.loginError = true;
+        this.registerError = true;
         console.warn(`Register failed: ${err.message}`);
       },
     });

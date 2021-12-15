@@ -49,4 +49,16 @@ export class AuthService {
     this.#auth$.next(null);
     console.log("User logged out");
   }
+
+  register(authRequest: AuthRequest): Observable<User> {
+    const authUrl = `${API_URL}/auth`;
+    return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
+      map((auth) => {
+        this.#auth$.next(auth);
+        console.log(`User ${auth.user.name} registered`);
+        return auth.user;
+      })
+    );
+  }
+  
 }
