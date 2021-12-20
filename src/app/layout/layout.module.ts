@@ -8,12 +8,15 @@ import { LayoutPageRoutingModule } from './layout-routing.module';
 
 import { LayoutPage } from './layout.page';
 
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LayoutPageRoutingModule
+    LayoutPageRoutingModule,
+    LeafletModule
   ],
   declarations: [LayoutPage]
 })

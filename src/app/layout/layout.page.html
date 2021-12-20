@@ -11,15 +11,13 @@
   </ion-toolbar>
 </ion-header>
 
+<div class="map" leaflet [leafletOptions]="mapOptions"></div>
 <ion-content class="ion-padding" [fullscreen]="true">
-
-
-  <div>
+  <div class="main">
     <router-outlet></router-outlet>
   </div>
 
   <div class="white-square"></div>
-
 </ion-content>
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter } from "rxjs/operators";
+import { latLng, MapOptions, tileLayer } from 'leaflet';
 
 declare type PageTab = {
   icon: string; // The icon of the tab in the tab bar
@@ -13,7 +14,7 @@ declare type PageTab = {
   styleUrls: ['./layout.page.scss'],
 })
 export class LayoutPage implements OnInit {
-
+  mapOptions: MapOptions;
   tabs: PageTab[];
   isLoginLayout = false;
 
@@ -23,6 +24,17 @@ export class LayoutPage implements OnInit {
       this.isLoginLayout = data?.setLoginLayout ?? false;
       console.log(this.isLoginLayout)
     });
+
+    this.mapOptions = {
+      layers: [
+        tileLayer(
+          'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          { maxZoom: 18 }
+        )
+      ],
+      zoom: 13,
+      center: latLng(46.778186, 6.641524)
+    };
   }
 
   ngOnInit() {
