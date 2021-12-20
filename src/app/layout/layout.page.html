@@ -1,13 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      <ion-button>
+
+    <ion-button routerLink="/home" slot="start">
+      <ion-title>
         <ion-img [src]=""></ion-img>
-      </ion-button>
-    </ion-title>
-    <ion-button *ngIf="!isLoginLayout" routerLink="/profil">
+      </ion-title>
+    </ion-button>
+
+
+    <ion-button *ngIf="!isLoginLayout" routerLink="/profil" slot="end">
       <ion-icon name="person-circle-outline"></ion-icon>
     </ion-button>
+
   </ion-toolbar>
 </ion-header>
 
@@ -17,7 +21,8 @@
     <router-outlet></router-outlet>
   </div>
 
-  <div class="white-square"></div>
+  <div class="white-square" *ngIf="!isLoginLayout"></div>
+
 </ion-content>
 
 
