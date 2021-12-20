@@ -15,7 +15,7 @@ const routes: Routes = [
         path: "home",
         canActivate: [AuthGuard],
         loadChildren: () =>
-          import("./home/home.module").then(
+          import("./pages/home/home.module").then(
             (m) => m.HomePageModule
           ),
       },
@@ -30,6 +30,22 @@ const routes: Routes = [
         path: "profil",
         loadChildren: () => import('./profil/profil.module').then(m => m.ProfilPageModule)
       },
+      {
+        path: 'profil',
+        loadChildren: () => import('./profil/profil.module').then( m => m.ProfilPageModule)
+      },
+      {
+        path: 'map',
+        loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
+      },
+      {
+        path: 'create-trip',
+        loadChildren: () => import('./pages/create-trip/create-trip.module').then( m => m.CreateTripPageModule)
+      },
+      {
+        path: 'create-place',
+        loadChildren: () => import('./pages/create-place/create-place.module').then( m => m.CreatePlacePageModule)
+      },
       //default route
       {
         path: "",
@@ -38,11 +54,8 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: 'profil',
-    loadChildren: () => import('./profil/profil.module').then( m => m.ProfilPageModule)
-  },
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
