@@ -25,4 +25,22 @@ export class ProfilPage implements OnInit {
     this.router.navigateByUrl("/auth/login");
   }
 
+  deleteUser() {
+  }
+
+  // updateUser() {
+  //   this.userService.update(this.id, this.form.value)
+  //       .pipe(first())
+  //       .subscribe({
+  //           next: () => {
+  //               this.alertService.success('User updated', { keepAfterRouteChange: true });
+  //               this.router.navigate(['../../'], { relativeTo: this.route });
+  //           },
+  //           error: error => {
+  //               this.alertService.error(error);
+  //               this.loading = false;
+  //           }
+  //       });
+  //}
+
 }

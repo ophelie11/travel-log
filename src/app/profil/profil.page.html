@@ -6,9 +6,17 @@
 
 <ion-content>
  
+    <ion-button (click)="updateUser()" color="success">
+      Update user
+    </ion-button> 
+
     <ion-button (click)="logOut()">
       <ion-icon name="log-out"></ion-icon>
     </ion-button>
 
+    <ion-button (click)="deleteUser()" color="danger">
+<!-- <ion-icon name="close-circle-outline"></ion-icon> -->      
+      Delete user
+    </ion-button>
 
 </ion-content>
