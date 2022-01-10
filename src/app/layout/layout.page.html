@@ -7,7 +7,6 @@
       </ion-title>
     </ion-button>
 
-
     <ion-button *ngIf="!isLoginLayout" routerLink="/profil" slot="end">
       <ion-icon name="person-circle-outline"></ion-icon>
     </ion-button>
@@ -16,6 +15,7 @@
 </ion-header>
 
 <div class="map" leaflet [leafletOptions]="mapOptions"></div>
+
 <ion-content class="ion-padding" [fullscreen]="true">
   <div class="main">
     <router-outlet></router-outlet>
@@ -25,11 +25,3 @@
 
 </ion-content>
 
-
-
-
-<!--
-  carte + logo dans les 2
-  dans home : bouton profil, carré blanc
-  dans login : les 2 boutons créer un compte et se connecter
--->

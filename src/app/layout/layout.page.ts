@@ -17,12 +17,15 @@ export class LayoutPage implements OnInit {
   mapOptions: MapOptions;
   tabs: PageTab[];
   isLoginLayout = false;
+  isMapLayout = false;
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
       const data = this.getLastChildData(this.route.snapshot);
       this.isLoginLayout = data?.setLoginLayout ?? false;
-      console.log(this.isLoginLayout)
+      this.isMapLayout = data?.setMapLayout ?? false;
+      console.log(this.isLoginLayout);
+      console.log(this.isMapLayout);
     });
 
     this.mapOptions = {

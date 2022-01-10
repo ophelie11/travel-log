@@ -32,6 +32,9 @@ const routes: Routes = [
       },
       {
         path: 'map',
+        data: {
+          setMapLayout: true
+        },
         loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
       },
       {

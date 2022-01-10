@@ -1,12 +1,28 @@
-<ion-searchbar></ion-searchbar>
+<ion-grid>
+    <ion-row>
+        <ion-col>
+            <ion-searchbar></ion-searchbar>
+        </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">   
+        <ion-col size="7.5">
+            <ion-button routerLink="/create-trip" color="primary" size="large">Create trip</ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-list>
+                <ion-list-header> Last trips </ion-list-header>
+            
+                <ion-item>
+            <!--Ajouter une truc dans avec JS qui va chercher la liste dans la base de donnée-->    
+                </ion-item>
+              </ion-list>
+        </ion-col>   
+    </ion-row>
+</ion-grid>
 
 
-<ion-button routerLink="/create-trip" color="primary" size="large">Create trip</ion-button>
 
-<ion-list>
-    <ion-list-header> Last trips </ion-list-header>
 
-    <ion-item>
-<!--Ajouter une truc dans avec JS qui va chercher la liste dans la base de donnée-->    
-    </ion-item>
-  </ion-list>
+
