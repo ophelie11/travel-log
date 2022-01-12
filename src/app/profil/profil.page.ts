@@ -28,7 +28,7 @@ export class ProfilPage implements OnInit {
   deleteUser() {
   }
 
-  // updateUser() {
+   updateUser() {
   //   this.userService.update(this.id, this.form.value)
   //       .pipe(first())
   //       .subscribe({
@@ -39,7 +39,7 @@ export class ProfilPage implements OnInit {
   //           error: error => {
   //               this.alertService.error(error);
   //               this.loading = false;
-  //           }
+           }
   //       });
   //}
 
