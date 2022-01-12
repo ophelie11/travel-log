@@ -8,14 +8,14 @@
 
 </ion-content>
 
-<h1>Create a trip</h1>
-<form #createTripForm="ngForm" (submit)="onSubmit(createTripForm)">
+<h1>Create a place</h1>
+<form #createTripForm="ngForm" (submit)="onSubmit(createPlaceForm)">
   <ion-list>
     <!-- title input -->
     <ion-item>
-      <ion-label position="floating">Title</ion-label>
-      <ion-input inputmode="text"required="true" name="title"
-        [(ngModel)]="trip.title"></ion-input>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input inputmode="text"required="true" name="name"
+        [(ngModel)]="place.name"></ion-input>
     </ion-item>
 
     <!-- Error message displayed if the username is invalid 
@@ -27,7 +27,7 @@
     <ion-item>
       <ion-label position="floating">Description</ion-label>
       <ion-input inputmode="text"  required="true" name="description"
-      [(ngModel)]="trip.description"></ion-input>
+      [(ngModel)]="place.description"></ion-input>
     </ion-item>
 
     <ion-radio-group>
