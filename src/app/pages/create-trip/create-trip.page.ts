@@ -9,6 +9,7 @@ import { TripService } from 'src/app/services/trip.service';
   templateUrl: './create-trip.page.html',
   styleUrls: ['./create-trip.page.scss'],
 })
+
 export class CreateTripPage {
 
   createTrip : CreateTrip;
