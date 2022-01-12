@@ -13,9 +13,12 @@
         <ion-col>
             <ion-list>
                 <ion-list-header> Last trips </ion-list-header>
-            
                 <ion-item>
-            <!--Ajouter une truc dans avec JS qui va chercher la liste dans la base de donnée-->    
+                    <div *ngFor="let trip of trips">
+                        <div>{{trip.title}}</div>
+                        <div>{{trip.description}}</div>
+                        <div>{{trip.placesCount}}</div>
+                    </div> 
                 </ion-item>
               </ion-list>
         </ion-col>   

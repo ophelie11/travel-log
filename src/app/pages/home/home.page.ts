@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Trip } from 'src/app/models/Trip';
+import { TripService } from 'src/app/services/trip.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
-  constructor() { }
+  trips : Trip[];
 
-  ngOnInit() {
+  constructor(private trip : TripService) {
+    this.trips = [];
+  }
+
+  ionViewWillEnter() {
+    this.trip.getTrip$().subscribe((apiTrips)=>{
+      this.trips = apiTrips;
+    });
   }
 
 }

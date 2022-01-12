@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CreateTrip } from '../models/createTrip';
+import { Trip } from '../models/trip';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,10 @@ export class TripService {
 
   createTrip$(createTrip : CreateTrip){
     return this.http.post("https://devmobil-voice-it.herokuapp.com/api/trips", createTrip);
+  }
+
+  getTrip$(){
+    return this.http.get<Trip[]>("https://devmobil-travel-log-api.herokuapp.com/api/trips")
   }
 
 }
