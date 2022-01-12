@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
       .isAuthenticated$()
       .pipe(
         map((isAuthenticated) =>
-          isAuthenticated ? true : this.router.parseUrl("/auth/login")
+          isAuthenticated ? true : this.router.parseUrl("/auth")
         )
       );
   }
