@@ -1,41 +1,34 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>profil</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-  <!-- <form #loginForm="ngForm" (submit)="onSubmit(loginForm)">
-    <ion-list>
-
-      <ion-item>
-        <ion-label position="floating">Username</ion-label>
-        <ion-input inputmode="text" #username="ngModel" required="true" name="username"
-          [(ngModel)]="authRequest.username"></ion-input>
-      </ion-item>
-
-
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
-        <ion-input inputmode="text" #password="ngModel" required="true" type="password" name="password"
-          [(ngModel)]="authRequest.password"></ion-input>
-      </ion-item>
-    </ion-list>
-
-  </form> -->
- 
-    <ion-button (click)="updateUser()" color="success">
-      Update user
-    </ion-button> 
-
-    <ion-button (click)="logOut()">
-      <ion-icon name="log-out"></ion-icon>
-    </ion-button>
-
-    <ion-button (click)="deleteUser()" color="danger">
-<!-- <ion-icon name="close-circle-outline"></ion-icon> -->      
-      Delete user
-    </ion-button>
-
-</ion-content>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-button routerLink="/home">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <h1 class="ion-text-center">Nom et prénom</h1>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="updateUser()" color="success">
+        Update user
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="deleteUser()" color="danger">
+        Delete user
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="logOut()" expand="block">
+        <ion-icon name="log-out"></ion-icon>
+        Log out
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

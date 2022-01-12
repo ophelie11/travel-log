@@ -1,24 +1,36 @@
-<ion-button routerLink="/home">
-  <ion-icon name="arrow-back-outline"></ion-icon>
-</ion-button>
-<form>
-<h1>Create a trip</h1>
-<form #createTripForm="ngForm" (submit)="onSubmit(createTripForm)">
-  <ion-list>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-button id="back" routerLink="/home">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <h1>Create a trip</h1>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <form #createTripForm="ngForm" (submit)="onSubmit(createTripForm)">
+        <ion-list>
 
-    <ion-item>
-      <ion-label position="floating">Title</ion-label>
-      <ion-input inputmode="text"required="true" name="title"
-        [(ngModel)]="createTrip.title"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label position="floating">Title</ion-label>
+            <ion-input inputmode="text" required="true" name="title" [(ngModel)]="createTrip.title"></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Description</ion-label>
-      <ion-textarea inputmode="text"  required="true" name="description"
-      [(ngModel)]="createTrip.description"></ion-textarea>
-    </ion-item>
+          <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea inputmode="text" required="true" name="description" [(ngModel)]="createTrip.description">
+            </ion-textarea>
+          </ion-item>
 
-    <ion-button type="submit" expand="block">Submit</ion-button>
+          <ion-button type="submit" expand="block">Submit</ion-button>
 
-  </ion-list>
-</form>
+        </ion-list>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>
