@@ -9,7 +9,19 @@
 
   .white-square {
     background-color: white;
-    height: 500px;
+    height: 160vw;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width: 100vw;
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .white-square-map {
+    background-color: white;
+    height: 65vw;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     width: 100vw;
@@ -25,7 +37,7 @@
     height: 100px;
 }
 
-.map {
+.map-blur {
   z-index: -1;
   position: absolute;
   width: 100vw;
@@ -35,12 +47,18 @@
   filter: blur(15px);
 }
 
+.map {
+  z-index: -1;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
 ion-toolbar {
   padding-left: 16px;
   padding-right: 16px;
 }
 
-h1 {
-  color: black;
-}
 

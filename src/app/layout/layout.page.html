@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
 
     <ion-button routerLink="/home" slot="start">
@@ -14,14 +14,21 @@
   </ion-toolbar>
 </ion-header>
 
-<div class="map" leaflet [leafletOptions]="mapOptions"></div>
+<div class="map-blur" leaflet [leafletOptions]="mapOptions" *ngIf="!isMapLayout"></div>
+<div class="map" leaflet [leafletOptions]="mapOptions" *ngIf="isMapLayout"></div>
 
 <ion-content class="ion-padding" [fullscreen]="true">
-  <div class="main">
+  <div class="main"  *ngIf="isLoginLayout">
     <router-outlet></router-outlet>
   </div>
 
-  <div class="white-square" *ngIf="!isLoginLayout"></div>
+  <div class="white-square" *ngIf="!isLoginLayout && !isMapLayout">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="white-square-map" *ngIf="isMapLayout">
+    <router-outlet></router-outlet>
+  </div>
 
 </ion-content>
 

@@ -22,6 +22,7 @@ export class LayoutPage implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
       const data = this.getLastChildData(this.route.snapshot);
+      console.log(data);
       this.isLoginLayout = data?.setLoginLayout ?? false;
       this.isMapLayout = data?.setMapLayout ?? false;
       console.log(this.isLoginLayout);
@@ -36,8 +37,10 @@ export class LayoutPage implements OnInit {
         )
       ],
       zoom: 13,
-      center: latLng(46.778186, 6.641524)
+      center: latLng(46.778186, 6.641524),
+      zoomControl: false
     };
+    
   }
 
   ngOnInit() {
