@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { CreateTrip } from '../models/createTrip';
 import { Trip } from '../models/trip';
 
@@ -11,11 +12,11 @@ export class TripService {
   constructor(private http: HttpClient) {}
 
   createTrip$(createTrip : CreateTrip){
-    return this.http.post("https://devmobil-voice-it.herokuapp.com/api/trips", createTrip);
+    return this.http.post(environment.apiUrl + "/trips", createTrip);
   }
 
   getTrip$(){
-    return this.http.get<Trip[]>("https://devmobil-travel-log-api.herokuapp.com/api/trips")
+    return this.http.get<Trip[]>(environment.apiUrl + "/trips")
   }
 
 }

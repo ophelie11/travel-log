@@ -19,15 +19,15 @@
 
 <ion-content class="ion-padding" [fullscreen]="true">
   <div class="main"  *ngIf="isLoginLayout">
-    <router-outlet></router-outlet>
+    <ion-router-outlet></ion-router-outlet>
   </div>
 
   <div class="white-square" *ngIf="!isLoginLayout && !isMapLayout">
-    <router-outlet></router-outlet>
+    <ion-router-outlet></ion-router-outlet>
   </div>
 
   <div class="white-square-map" *ngIf="isMapLayout">
-    <router-outlet></router-outlet>
+    <ion-router-outlet></ion-router-outlet>
   </div>
 
 </ion-content>

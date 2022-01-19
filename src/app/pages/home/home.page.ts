@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { ViewWillEnter } from '@ionic/angular';
 import { Trip } from 'src/app/models/Trip';
 import { TripService } from 'src/app/services/trip.service';
 
@@ -7,7 +8,7 @@ import { TripService } from 'src/app/services/trip.service';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements ViewWillEnter {
 
   trips : Trip[];
 
@@ -15,7 +16,7 @@ export class HomePage {
     this.trips = [];
   }
 
-  ionViewWillEnter() {
+  ionViewWillEnter(): void {
     this.trip.getTrip$().subscribe((apiTrips)=>{
       this.trips = apiTrips;
     });
