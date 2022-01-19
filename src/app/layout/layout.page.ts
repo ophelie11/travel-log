@@ -21,13 +21,11 @@ export class LayoutPage implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-      const data = this.getLastChildData(this.route.snapshot);
-      console.log(data);
+      const data = this.getLastChildData(this.router.routerState.snapshot.root);
       this.isLoginLayout = data?.setLoginLayout ?? false;
       this.isMapLayout = data?.setMapLayout ?? false;
-      console.log(this.isLoginLayout);
-      console.log(this.isMapLayout);
     });
+    
 
     this.mapOptions = {
       layers: [
@@ -44,33 +42,32 @@ export class LayoutPage implements OnInit {
     
   }
 
+  // ngOnInit() {
+  // }
+
   ngOnInit() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.setGeoLocation.bind(this));
+   }
   }
 
-//   ngOnInit() {
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(this.setGeoLocation.bind(this));
-//    }
-//   }
+  setGeoLocation(position: { coords: { latitude: any; longitude: any } }) {
+    const {
+       coords: { latitude, longitude },
+    } = position;
 
-//   setGeoLocation(position: { coords: { latitude: any; longitude: any } }) {
-//     const {
-//        coords: { latitude, longitude },
-//     } = position;
-
-//     this.mapOptions = {
-//       layers: [
-//         tileLayer(
-//           'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-//           { maxZoom: 18 }
-//         )
-//       ],
-//       zoom: 13,
-//       //center: latLng(46.778186, 6.641524),
-//       center: latLng(latitude, longitude),
-//       zoomControl: false
-//     };
-//  }
+    this.mapOptions = {
+      layers: [
+        tileLayer(
+          'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          { maxZoom: 18 }
+        )
+      ],
+      zoom: 13,
+      center: latLng(latitude, longitude),
+      zoomControl: false
+    };
+ }
 
   private getLastChildData(route: ActivatedRouteSnapshot) {
     if (route.firstChild) {
