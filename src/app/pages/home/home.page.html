@@ -1,32 +1,30 @@
-<ion-grid>
+<ion-grid class="ion-margin">
     <ion-row>
         <ion-col>
             <ion-searchbar></ion-searchbar>
         </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-center">   
+    <ion-row class="ion-justify-content-center">
         <ion-col size="7.5">
             <ion-button routerLink="/create-trip" color="primary" size="large">Create trip</ion-button>
         </ion-col>
     </ion-row>
     <ion-row>
         <ion-col>
-            <ion-list>
-                <ion-list-header> Last trips </ion-list-header>
-                <ion-item>
-                    <div *ngFor="let trip of trips">
-                        <div>{{trip.title}}</div>
-                        <div>{{trip.description}}</div>
-                        <div>{{trip.placesCount}}</div>
-                        <ion-button (click)="deleteTrip(trip.id)">Delete</ion-button>
-                    </div> 
-                </ion-item>
-              </ion-list>
-        </ion-col>   
+            <h2> Last trips :</h2>
+        </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let trip of trips">
+        <ion-col>
+            <h3>
+                <ion-icon name="navigate"></ion-icon>{{trip.title}}
+            </h3>
+        </ion-col>
+        <ion-col size="2">
+            <ion-button routerLink="/edit-trip"><ion-icon name="create"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size="2">
+            <ion-button (click)="deleteTrip(trip.id)"><ion-icon name="trash"></ion-icon></ion-button>
+        </ion-col>
     </ion-row>
 </ion-grid>
-
-
-
-
-

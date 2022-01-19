@@ -45,14 +45,18 @@ const routes: Routes = [
         path: 'create-place',
         loadChildren: () => import('./pages/create-place/create-place.module').then( m => m.CreatePlacePageModule)
       },
+      {
+        path: 'edit-trip',
+        loadChildren: () => import('./pages/edit-trip/edit-trip.module').then( m => m.EditTripPageModule)
+      },
       //default route
       {
         path: "",
-        redirectTo: "home", // Or whatever tabs is your default one
+        redirectTo: "home", 
         pathMatch: "full",
       }
     ]
-  },
+  }
 ];
 
 @NgModule({
