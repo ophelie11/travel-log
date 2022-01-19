@@ -22,4 +22,9 @@ export class HomePage implements ViewWillEnter {
     });
   }
 
+  deleteTrip(id : string): void {
+    this.trip.deleteTrip$(id).subscribe(() => {
+      
+    });
+  }
 }
