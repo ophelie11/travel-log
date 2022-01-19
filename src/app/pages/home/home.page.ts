@@ -24,7 +24,9 @@ export class HomePage implements ViewWillEnter {
 
   deleteTrip(id : string): void {
     this.trip.deleteTrip$(id).subscribe(() => {
-      
+      const index = this.trips.findIndex((element) => element.id === id);
+      console.log(index);
+      this.trips.splice(index, 1);
     });
   }
 }

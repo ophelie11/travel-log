@@ -23,8 +23,8 @@ export class TripService {
     return this.http.delete(environment.apiUrl + "/trips/" + id)
   }
 
-  updateTrip$(id : string){
-    return this.http.patch(environment.apiUrl + "/trips/" + id)
-  }
+  // updateTrip$(id : string){
+  //   return this.http.patch(environment.apiUrl + "/trips/" + id)
+  // }
 
 }
