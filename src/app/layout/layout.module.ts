@@ -10,6 +10,8 @@ import { LayoutPage } from './layout.page';
 
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +20,9 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     LayoutPageRoutingModule,
     LeafletModule
   ],
-  declarations: [LayoutPage]
+  declarations: [LayoutPage],
+  providers: [
+    Geolocation
+  ]
 })
-export class LayoutPageModule {}
+export class LayoutPageModule { }

@@ -5,6 +5,7 @@
 
   ion-content{ 
     font-family:Poppins !important;
+    pointer-events: none;
   }
 
   .white-square {
@@ -17,6 +18,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    pointer-events: all;
   }
 
   .white-square-map {
@@ -29,12 +31,14 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    pointer-events: all;
   }
   
 .main {
     background-color: transparent;
     border-radius: 20px;
     height: 100px;
+    pointer-events: all;
 }
 
 .map-blur {
