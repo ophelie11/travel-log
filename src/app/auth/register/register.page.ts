@@ -3,7 +3,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 
 import { AuthService } from "../auth/auth.service";
-import { AuthRequest } from "../../models/auth-request";
+import { RegisterRequest } from "../../models/register-request";
 
 /**
  * Register page.
@@ -16,7 +16,7 @@ export class RegisterPage {
    * This authentication request object will be updated when the user
    * edits the login form. It will then be sent to the API.
    */
-  authRequest: AuthRequest;
+  registerRequest: RegisterRequest;
 
   /**
    * If true, it means that the authentication API has return a failed response
@@ -25,8 +25,8 @@ export class RegisterPage {
   registerError: boolean;
 
   constructor(private auth: AuthService, private router: Router) {
-    this.authRequest = {
-      username: undefined,
+    this.registerRequest = {
+      name: undefined,
       password: undefined,
     };
   }
@@ -44,7 +44,7 @@ export class RegisterPage {
     this.registerError = false;
 
     // Perform the authentication request to the API.
-    this.auth.register$(this.authRequest).subscribe({
+    this.auth.register$(this.registerRequest).subscribe({
       next: () => this.router.navigateByUrl("/"),
       error: (err) => {
         this.registerError = true;

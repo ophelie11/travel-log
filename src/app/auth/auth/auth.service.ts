@@ -10,6 +10,7 @@ import { AuthRequest } from "../../models/auth-request";
 import { Storage } from "@ionic/storage";
 
 import { environment } from "src/environments/environment";
+import { RegisterRequest } from "src/app/models/register-request";
 
 /**
  * Authentication service for login/logout.
@@ -56,20 +57,20 @@ export class AuthService {
   console.log('User logged out');
   }
 
-  register(authRequest: AuthRequest): Observable<User> {
-    const authUrl = `${environment.apiUrl}/auth`;
-    return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
-      delayWhen((auth) => this.saveAuth$(auth)),
-      map((auth) => {
-        this.#auth$.next(auth);
-        console.log(`User ${auth.user.name} registered`);
-        return auth.user;
-      })
-    );
-  }
+  // register(authRequest: AuthRequest): Observable<User> {
+  //   const authUrl = `${environment.apiUrl}/auth`;
+  //   return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
+  //     delayWhen((auth) => this.saveAuth$(auth)),
+  //     map((auth) => {
+  //       this.#auth$.next(auth);
+  //       console.log(`User ${auth.user.name} registered`);
+  //       return auth.user;
+  //     })
+  //   );
+  // }
 
-  register$(authRequest: AuthRequest){
-    return this.http.post(environment.apiUrl + "/users", authRequest);
+  register$(registerRequest: RegisterRequest){
+    return this.http.post(environment.apiUrl + "/users", registerRequest);
   }
 
   private saveAuth$(auth: AuthResponse): Observable<void> {

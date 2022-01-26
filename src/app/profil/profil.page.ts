@@ -22,7 +22,7 @@ export class ProfilPage implements OnInit {
     private router: Router,
     private userService: UserService,
   ) { 
-    this.auth.getUser$().subscribe(user => this.userName = user?.name);
+    this.auth.getUser$().subscribe(user => this.user = user);
   }
 
 
