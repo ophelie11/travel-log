@@ -4,7 +4,6 @@ export type Trip = {
     name: string;
     description: string;
     location: String;
-    tripHref: String;
     tripId: String;
     pictureUrl: String;
   };

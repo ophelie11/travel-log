@@ -5,7 +5,8 @@ import { CreatePlace } from 'src/app/models/createPlace';
 import { QimgImage } from 'src/app/models/qimg-image';
 import { PlaceService } from 'src/app/services/place.service';
 import { PictureService } from 'src/app/services/picture.service';
-import { Photo } from '@capacitor/camera';
+import { Geolocation } from '@capacitor/geolocation';
+
 
 @Component({
   selector: 'app-create-place',
@@ -19,9 +20,9 @@ export class CreatePlacePage {
 
   createPlaceError: boolean;
 
-  takeAndUploadPicture : QimgImage;
+  picture? : QimgImage;
 
-  constructor(private router: Router, private place : PlaceService, private picture : PictureService) {
+  constructor(private router: Router, private place : PlaceService, private pictureService : PictureService) {
     this.createPlace = {
       name: undefined,
       description: undefined,
@@ -29,13 +30,7 @@ export class CreatePlacePage {
       tripId: undefined,
       pictureUrl: undefined,
     };
-    this.takeAndUploadPicture = {
-      id: undefined,
-      size: undefined,
-      url: undefined,
-      createdAt: undefined,
     }
-  }
 
   onSubmit(form: NgForm) {
     // Do not do anything if the form is invalid.
@@ -46,22 +41,14 @@ export class CreatePlacePage {
     this.createPlaceError = false;
 
     this.place.createPlace$(this.createPlace).subscribe({
-      next: () => this.router.navigateByUrl("/map"),
-      //error: (err) => {
-      //  this.loginError = true;
-      //  console.warn(`Authentication failed: ${err.message}`);
-      //},
+      next: () => this.router.navigateByUrl("/map"), 
     });
   }
 
   takePicture() {
 
-    this.picture.takeAndUploadPicture().subscribe({
-      next: () => this.router.navigateByUrl("/"),
-      //error: (err) => {
-      //  this.loginError = true;
-      //  console.warn(`Authentication failed: ${err.message}`);
-      //},
+    this.pictureService.takeAndUploadPicture().subscribe({
+      next: picture => this.picture = picture
     });
   }
 }
