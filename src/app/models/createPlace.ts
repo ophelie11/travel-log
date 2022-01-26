@@ -1,7 +1,9 @@
+import {GeoJsonPoint} from 'geojson'
+
 export type CreatePlace = {
     name: string;
     description: string;
-    location: String;
-    tripId: String;
-    pictureUrl: String;
+    location: GeoJsonPoint;
+    tripId: string;
+    pictureUrl: string;
 };
