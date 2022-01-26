@@ -19,12 +19,16 @@ export class TripService {
     return this.http.get<Trip[]>(environment.apiUrl + "/trips")
   }
 
+  getOneTrip(id : string){
+    return this.http.get<Trip>(environment.apiUrl + "/trips/" + id)
+  }
+
   deleteTrip$(id : string){
     return this.http.delete(environment.apiUrl + "/trips/" + id)
   }
 
-  // updateTrip$(id : string){
-  //   return this.http.patch(environment.apiUrl + "/trips/" + id)
-  // }
+  editTrip$(id : string, editTrip : CreateTrip){
+   return this.http.patch(environment.apiUrl + "/trips/" + id, editTrip)
+ }
 
 }

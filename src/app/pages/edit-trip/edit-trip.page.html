@@ -1,4 +1,4 @@
-<ion-grid>
+<ion-grid class="ion-margin">
   <ion-row>
     <ion-col>
       <ion-button id="back" routerLink="/home">
@@ -13,19 +13,17 @@
   </ion-row>
   <ion-row>
     <ion-col>
-      <!-- <form #createTripForm="ngForm" (submit)="onSubmit(createTripForm)"> -->
-        <form>
+      <form #editTripForm="ngForm" (submit)="onSubmit(editTripForm)">
         <ion-list>
 
           <ion-item>
             <ion-label position="floating">Title</ion-label>
-            <ion-input inputmode="text" required="true" name="title" ></ion-input>
+            <ion-input inputmode="text" required="true" name="title" [(ngModel)]="editTrip.title"> </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">Description</ion-label>
-            <ion-textarea inputmode="text" required="true" name="description">
-            </ion-textarea>
+            <ion-textarea inputmode="text" required="true" [(ngModel)]="editTrip.description" name="description"></ion-textarea>
           </ion-item>
 
           <ion-button type="submit" expand="block">Submit</ion-button>

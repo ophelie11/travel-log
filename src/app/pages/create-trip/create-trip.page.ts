@@ -24,19 +24,12 @@ export class CreateTripPage {
   }
 
    onSubmit(form: NgForm) {
-    // Do not do anything if the form is invalid.
     if (form.invalid) {
       return;
     }
 
-    this.createTripError = false;
-
     this.trip.createTrip$(this.createTrip).subscribe({
       next: () => this.router.navigateByUrl("/"),
-      //error: (err) => {
-      //  this.loginError = true;
-      //  console.warn(`Authentication failed: ${err.message}`);
-      //},
     });
   }
 

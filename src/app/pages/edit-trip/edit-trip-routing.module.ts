@@ -5,7 +5,7 @@ import { EditTripPage } from './edit-trip.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: EditTripPage
   }
 ];
