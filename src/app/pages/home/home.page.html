@@ -4,9 +4,9 @@
             <ion-searchbar></ion-searchbar>
         </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-center">
-        <ion-col size="7.5">
-            <ion-button routerLink="/create-trip" color="primary" size="large">Create trip</ion-button>
+    <ion-row>
+        <ion-col>
+            <ion-button routerLink="/create-trip" color="primary" size="large" expand="block">Create trip</ion-button>
         </ion-col>
     </ion-row>
     <ion-row>
@@ -16,7 +16,7 @@
     </ion-row>
     <ion-row *ngFor="let trip of trips">
         <ion-col>
-            <h3>
+            <h3 (click)="redirectMap(trip.title)">
                 <ion-icon name="navigate"></ion-icon>{{trip.title}}
             </h3>
         </ion-col>

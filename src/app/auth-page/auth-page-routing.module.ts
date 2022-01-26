@@ -19,6 +19,10 @@ const routes: Routes = [
         (m) => m.LoginPageModule
       ),
   },
+  {
+    path: 'update-user',
+    loadChildren: () => import('../auth/update-user/update-user.module').then( m => m.UpdateUserPageModule)
+  },
 ];
 
 @NgModule({

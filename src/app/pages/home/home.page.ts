@@ -2,6 +2,7 @@ import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { ViewWillEnter } from '@ionic/angular';
 import { Trip } from 'src/app/models/Trip';
 import { TripService } from 'src/app/services/trip.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomePage implements ViewWillEnter {
 
   trips : Trip[];
 
-  constructor(private trip : TripService) {
+  constructor(private trip : TripService, private router: Router) {
     this.trips = [];
   }
 
@@ -28,5 +29,9 @@ export class HomePage implements ViewWillEnter {
       console.log(index);
       this.trips.splice(index, 1);
     });
+  }
+
+  redirectMap(title: string) {
+    this.router.navigateByUrl(`/map/${title}`);
   }
 }

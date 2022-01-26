@@ -6,12 +6,12 @@ import { AuthService } from "../auth/auth.service";
 import { AuthRequest } from "../../models/auth-request";
 
 /**
- * Register page.
+ * Update login page.
  */
 @Component({
-  templateUrl: "register.page.html",
+  templateUrl: "update-user.page.html",
 })
-export class RegisterPage {
+export class UpdateUserPage {
   /**
    * This authentication request object will be updated when the user
    * edits the login form. It will then be sent to the API.
@@ -22,17 +22,19 @@ export class RegisterPage {
    * If true, it means that the authentication API has return a failed response
    * (probably because the name or password is incorrect).
    */
-  registerError: boolean;
+  loginError: boolean;
+  userName : string;
 
   constructor(private auth: AuthService, private router: Router) {
     this.authRequest = {
       username: undefined,
       password: undefined,
     };
+    this.auth.getUser$().subscribe(user => this.userName = user.name);
   }
 
   /**
-   * Called when the register form is submitted.
+   * Called when the login form is submitted.
    */
   onSubmit(form: NgForm) {
     // Do not do anything if the form is invalid.
@@ -40,15 +42,15 @@ export class RegisterPage {
       return;
     }
 
-    // Hide any previous register error.
-    this.registerError = false;
+    // Hide any previous login error.
+    this.loginError = false;
 
     // Perform the authentication request to the API.
-    this.auth.register$(this.authRequest).subscribe({
-      next: () => this.router.navigateByUrl("/"),
+    this.auth.logIn$(this.authRequest).subscribe({
+      next: () => this.router.navigateByUrl("/home"),
       error: (err) => {
-        this.registerError = true;
-        console.warn(`Register failed: ${err.message}`);
+        this.loginError = true;
+        console.warn(`Authentication failed: ${err.message}`);
       },
     });
   }

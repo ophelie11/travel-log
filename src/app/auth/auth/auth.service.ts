@@ -68,6 +68,10 @@ export class AuthService {
     );
   }
 
+  register$(authRequest: AuthRequest){
+    return this.http.post(environment.apiUrl + "/users", authRequest);
+  }
+
   private saveAuth$(auth: AuthResponse): Observable<void> {
     return from(this.storage.set('auth', auth));
   }

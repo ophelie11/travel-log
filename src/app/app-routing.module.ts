@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LayoutPage } from './layout/layout.page';
 import { AuthGuard } from './auth/auth/auth.guard';
+import { MapPage } from './pages/map/map.page';
 
 const routes: Routes = [
   {
@@ -56,7 +57,9 @@ const routes: Routes = [
         pathMatch: "full",
       }
     ]
-  }
+  },
+  
+
 ];
 
 @NgModule({

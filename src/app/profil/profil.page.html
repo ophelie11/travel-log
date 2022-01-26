@@ -1,7 +1,7 @@
 <ion-grid class="ion-margin">
-  <ion-row>
-    <ion-col>
-      <h1 class="ion-text-center">Nom et prénom</h1>
+  <ion-row >
+    <ion-col *ngIf="userName">
+      <h1 class="ion-text-center"> Hi {{userName}}</h1>
     </ion-col>
   </ion-row>
   <ion-row>

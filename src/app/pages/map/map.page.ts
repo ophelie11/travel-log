@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Trip } from 'src/app/models/Trip';
+import { TripService } from 'src/app/services/trip.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapPage implements OnInit {
 
-  constructor() { }
+ 
+  tripTitle: string;
+  
+
+  constructor(private trip : TripService, private router: Router, private route: ActivatedRoute) {
+    
+    this.tripTitle = this.route.snapshot.params.title;
+  }
 
   ngOnInit() {
   }

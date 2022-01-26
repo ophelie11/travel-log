@@ -29,7 +29,7 @@ export class CreateTripPage {
     }
 
     this.trip.createTrip$(this.createTrip).subscribe({
-      next: () => this.router.navigateByUrl("/"),
+      next: () => this.router.navigateByUrl("/")
     });
   }
 
