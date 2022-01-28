@@ -19,6 +19,10 @@ export class MapPage implements OnInit {
     this.tripTitle = this.route.snapshot.params.title;
   }
 
+  redirectCreatePlace(title: string) {
+    this.router.navigateByUrl(`/create-place/${title}`);
+  }
+
   ngOnInit() {
   }
 
