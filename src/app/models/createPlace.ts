@@ -1,4 +1,3 @@
-import {GeoJsonPoint} from 'GeoJson';
 import { LatLng } from "leaflet";
 
 /**
