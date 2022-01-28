@@ -21,8 +21,6 @@ export class CreatePlacePage {
 
   createPlaceError: boolean;
 
-  currentPos : LatLng;
-
   picture? : QimgImage;
 
   constructor(private router: Router, private place : PlaceService, private pictureService : PictureService, private geolocation: Geolocation) {
@@ -48,9 +46,6 @@ export class CreatePlacePage {
     if (form.invalid) {
       return;
     }
-
-    console.log(this.createPlace);
-  
 
     this.createPlaceError = false;
 
