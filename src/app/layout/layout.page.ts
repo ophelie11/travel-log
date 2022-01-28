@@ -31,6 +31,7 @@ export class LayoutPage implements OnInit {
       this.isLoginLayout = data?.setLoginLayout ?? false;
       this.isMapLayout = data?.setMapLayout ?? false;
     });
+
     this.mapOptions = {
       trackResize: false,
       layers: [

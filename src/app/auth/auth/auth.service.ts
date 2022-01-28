@@ -76,5 +76,4 @@ export class AuthService {
   private saveAuth$(auth: AuthResponse): Observable<void> {
     return from(this.storage.set('auth', auth));
   }
-  
 }

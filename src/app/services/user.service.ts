@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { CreateUser } from '../models/createUser';
 import { User } from '../models/user';
+import { RegisterRequest } from '../models/register-request';
 
 @Injectable({
   providedIn: 'root'
@@ -23,4 +24,7 @@ export class UserService {
     return this.http.delete(environment.apiUrl + "/users/" + id)
   }
 
+  editUser$(id : string, editUser : RegisterRequest){
+    return this.http.patch(environment.apiUrl + "/users/" + id, editUser)
+  }
 }

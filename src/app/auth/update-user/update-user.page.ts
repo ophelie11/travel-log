@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 
 import { AuthService } from "../auth/auth.service";
 import { AuthRequest } from "../../models/auth-request";
+import { UserService } from "src/app/services/user.service";
+import { RegisterRequest } from "src/app/models/register-request";
 
 /**
  * Update login page.
@@ -16,21 +18,22 @@ export class UpdateUserPage {
    * This authentication request object will be updated when the user
    * edits the login form. It will then be sent to the API.
    */
-  authRequest: AuthRequest;
+  authRequest: RegisterRequest;
 
   /**
    * If true, it means that the authentication API has return a failed response
    * (probably because the name or password is incorrect).
    */
   loginError: boolean;
-  userName : string;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: AuthService, private router: Router, private user: UserService) {
     this.authRequest = {
-      username: undefined,
+      name: undefined,
       password: undefined,
     };
-    this.auth.getUser$().subscribe(user => this.userName = user.name);
+    this.auth.getUser$().subscribe(user => {
+      this.authRequest.name = user.name;
+    });
   }
 
   /**
@@ -46,12 +49,11 @@ export class UpdateUserPage {
     this.loginError = false;
 
     // Perform the authentication request to the API.
-    this.auth.logIn$(this.authRequest).subscribe({
-      next: () => this.router.navigateByUrl("/home"),
-      error: (err) => {
-        this.loginError = true;
-        console.warn(`Authentication failed: ${err.message}`);
-      },
+    this.auth.getUser$().subscribe(user => {
+      this.user.editUser$(user.id, this.authRequest).subscribe({
+        next: () => this.router.navigateByUrl("/home"),
+      });
     });
+
   }
 }

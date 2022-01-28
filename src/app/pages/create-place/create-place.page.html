@@ -20,10 +20,6 @@
       <ion-input inputmode="text"  required="true" name="description" [(ngModel)]="createPlace.description"></ion-input>
     </ion-item>
 
-    <!-- <io-item>
-      position actuel
-    </io-item> -->
-
     <ion-item>
       <ion-button (click)="takePicture()">Take picture</ion-button>
       <img *ngIf="picture" [src]="picture.url">
@@ -72,11 +68,6 @@
 
     <ion-button type="submit" expand="block">Submit</ion-button>
 
-    <!-- Error message displayed if the password is invalid
-    <ion-item lines="none" *ngIf="description.invalid && description.touched">
-      <ion-text color="danger">Description is required.</ion-text>
-    </ion-item>
-     -->
   </ion-list>
 </form>
 

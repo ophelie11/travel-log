@@ -1,9 +1,9 @@
-import {GeoJsonPoint} from 'geojson'
+import { LatLng } from "leaflet";
 
 export type CreatePlace = {
     name: string;
     description: string;
-    location: GeoJsonPoint;
+    location: LatLng;
     tripId: string;
     pictureUrl: string;
 };

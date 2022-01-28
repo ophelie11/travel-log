@@ -5,7 +5,8 @@ import { CreatePlace } from 'src/app/models/createPlace';
 import { QimgImage } from 'src/app/models/qimg-image';
 import { PlaceService } from 'src/app/services/place.service';
 import { PictureService } from 'src/app/services/picture.service';
-import { Geolocation } from '@capacitor/geolocation';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { LatLng, latLng } from 'leaflet';
 
 
 @Component({
@@ -20,16 +21,24 @@ export class CreatePlacePage {
 
   createPlaceError: boolean;
 
+  currentPos : LatLng;
+
   picture? : QimgImage;
 
-  constructor(private router: Router, private place : PlaceService, private pictureService : PictureService) {
+  constructor(private router: Router, private place : PlaceService, private pictureService : PictureService, private geolocation: Geolocation) {
     this.createPlace = {
       name: undefined,
       description: undefined,
-      location: undefined,
+      location: this.currentPos,
       tripId: undefined,
       pictureUrl: undefined,
     };
+
+    this.geolocation.getCurrentPosition().then((resp) => {
+      console.log(resp.coords.latitude)
+      this.currentPos = latLng(resp.coords.latitude, resp.coords.longitude);
+    })
+
     }
 
   onSubmit(form: NgForm) {
@@ -37,6 +46,8 @@ export class CreatePlacePage {
     if (form.invalid) {
       return;
     }
+
+    console.log(this.currentPos);
 
     this.createPlaceError = false;
 
