@@ -14,6 +14,7 @@ export class HomePage implements ViewWillEnter {
   trips : Trip[];
   searchingText: string;
   userId: string;
+  //tripId: string;
 
   constructor(private trip : TripService, private router: Router) {
     this.trips = [];
@@ -33,8 +34,8 @@ export class HomePage implements ViewWillEnter {
     });
   }
 
-  redirectMap(title: string) {
-    this.router.navigateByUrl(`/map/${title}`);
+  redirectMap(id: string) {
+    this.router.navigateByUrl(`/map/${id}`);
   }
 
   search(){

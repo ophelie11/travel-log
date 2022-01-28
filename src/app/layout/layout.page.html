@@ -14,8 +14,10 @@
   </ion-toolbar>
 </ion-header>
 
-<div class="map-blur" leaflet [leafletOptions]="mapOptions" *ngIf="!isMapLayout" [(leafletCenter)]="mapCenter" (leafletMapReady)="onMapReady($event)"></div>
-<div class="map" leaflet [leafletOptions]="mapOptions" *ngIf="isMapLayout" [(leafletCenter)]="mapCenter" (leafletMapReady)="onMapReady($event)"></div>
+<ng-container *ngIf="mapOptions">
+  <div class="map-blur" leaflet [leafletOptions]="mapOptions" *ngIf="!isMapLayout" [(leafletCenter)]="mapCenter" (leafletMapReady)="onMapReady($event)"></div>
+  <div class="map" leaflet [leafletOptions]="mapOptions" *ngIf="isMapLayout" [(leafletCenter)]="mapCenter" (leafletMapReady)="onMapReady($event)"></div>
+</ng-container>
 
 <ion-content class="ion-padding" [fullscreen]="true">
   <div class="main"  *ngIf="isLoginLayout">

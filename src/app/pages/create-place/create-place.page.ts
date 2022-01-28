@@ -5,8 +5,9 @@ import { CreatePlace } from 'src/app/models/createPlace';
 import { QimgImage } from 'src/app/models/qimg-image';
 import { PlaceService } from 'src/app/services/place.service';
 import { PictureService } from 'src/app/services/picture.service';
-import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
-import { LatLng, latLng } from 'leaflet';
+ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+//import { Geolocation } from '@capacitor/geolocation';
+import { LatLng, latLng, Point } from 'leaflet';
 
 
 @Component({
@@ -23,11 +24,10 @@ export class CreatePlacePage {
 
   picture? : QimgImage;
 
-  tripTitle: string;
+  tripId: string;
 
   constructor(private router: Router, private place : PlaceService, private pictureService : PictureService, private geolocation: Geolocation, private route: ActivatedRoute) {
     this.createPlace = {
-      href: undefined,
       name: undefined,
       description: undefined,
       location: undefined,
@@ -37,11 +37,13 @@ export class CreatePlacePage {
     };
 
     this.geolocation.getCurrentPosition().then((resp) => {
-      console.log(resp.coords.latitude)
-      this.createPlace.location = latLng(resp.coords.latitude, resp.coords.longitude);
+      this.createPlace.location = {
+        type : "Point",
+        coordinates : [resp.coords.latitude, resp.coords.longitude]
+        };
     })
 
-    this.createPlace.tripId = this.route.snapshot.params.title;
+    this.createPlace.tripId = this.route.snapshot.params.id;
 
     }
 
@@ -56,19 +58,17 @@ export class CreatePlacePage {
     console.log(this.createPlace);
 
     this.place.createPlace$(this.createPlace).subscribe({
-      next: () => this.router.navigateByUrl("/map"), 
+      next: () => this.router.navigateByUrl("/")
     });
   }
 
   takePicture() {
-
     this.pictureService.takeAndUploadPicture().subscribe({
       next: picture => this.picture = picture
     });
   }
 
   radioChecked(categorie : string) : void {
-    console.log(categorie)
     this.createPlace.categorie = categorie;
   }
 }

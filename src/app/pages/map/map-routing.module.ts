@@ -5,7 +5,7 @@ import { MapPage } from './map.page';
 
 const routes: Routes = [
   {
-    path: ':title',
+    path: ':id',
     component: MapPage
   }
 ];

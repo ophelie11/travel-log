@@ -6,10 +6,10 @@
       </ion-button>
     </ion-col>
   </ion-row>
-  <ion-row *ngIf="tripTitle != ''">
+  <ion-row *ngIf="getTrip.title != ''">
     <ion-col class="ion-text-center">
-      <h1>{{tripTitle}}</h1>
-      <ion-button (click)="redirectCreatePlace(tripTitle)">Ajouter un lieu</ion-button>
+      <h1>{{getTrip.title}}</h1>
+      <ion-button (click)="redirectCreatePlace(tripId)">Ajouter un lieu</ion-button>
     </ion-col>
   </ion-row>
   <ion-row class="ion-margin-top">

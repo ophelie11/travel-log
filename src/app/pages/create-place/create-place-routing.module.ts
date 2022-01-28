@@ -5,7 +5,7 @@ import { CreatePlacePage } from './create-place.page';
 
 const routes: Routes = [
   {
-    path: ':title',
+    path: ':id',
     component: CreatePlacePage
   }
 ];

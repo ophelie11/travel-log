@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Trip } from 'src/app/models/Trip';
 import { TripService } from 'src/app/services/trip.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CreatePlace } from 'src/app/models/createPlace';
+import { CreateTrip } from 'src/app/models/createTrip';
 
 @Component({
   selector: 'app-map',
@@ -11,16 +13,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MapPage implements OnInit {
 
  
-  tripTitle: string;
-  
+  getTrip: CreateTrip;
+  tripId: string;
 
   constructor(private trip : TripService, private router: Router, private route: ActivatedRoute) {
+
+    this.getTrip = {
+      title: undefined,
+      description: undefined,
+    };
     
-    this.tripTitle = this.route.snapshot.params.title;
+    this.tripId= this.route.snapshot.params.id;
+
+    console.log(this.tripId);
+
+    this.trip.getOneTrip(this.tripId).subscribe(trip => {
+      this.getTrip.title = trip.title;
+    })
   }
 
-  redirectCreatePlace(title: string) {
-    this.router.navigateByUrl(`/create-place/${title}`);
+  redirectCreatePlace(id: string) {
+    this.router.navigateByUrl(`/create-place/${id}`);
   }
 
   ngOnInit() {

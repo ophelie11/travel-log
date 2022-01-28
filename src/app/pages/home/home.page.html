@@ -16,7 +16,7 @@
     </ion-row>
     <ion-row *ngFor="let trip of trips">
         <ion-col>
-            <h3 (click)="redirectMap(trip.title)">
+            <h3 (click)="redirectMap(trip.id)">
                 <ion-icon name="navigate"></ion-icon>{{trip.title}}
             </h3>
         </ion-col>

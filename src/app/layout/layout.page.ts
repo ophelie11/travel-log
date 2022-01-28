@@ -17,14 +17,16 @@ declare type PageTab = {
 
 
 export class LayoutPage implements OnInit {
-  mapOptions: MapOptions;
+  mapOptions ?: MapOptions;
   tabs: PageTab[];
   isLoginLayout = false;
   isMapLayout = false;
-  mapCenter: LatLng;
+  #mapCenter ?: LatLng;
+  get mapCenter():LatLng{return this.#mapCenter}
+  set mapCenter(value:LatLng){console.log(value);this.#mapCenter = value}
 
   constructor(private route: ActivatedRoute, private router: Router, private geolocation: Geolocation) {
-    this.mapCenter = latLng(46.778690, 6.641400);
+    
 
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
       const data = this.getLastChildData(this.router.routerState.snapshot.root);
@@ -32,23 +34,22 @@ export class LayoutPage implements OnInit {
       this.isMapLayout = data?.setMapLayout ?? false;
     });
 
-    this.mapOptions = {
-      trackResize: false,
-      layers: [
-        tileLayer(
-          'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-          { maxZoom: 18 }
-        )
-      ],
-      zoom: 13,
-      center: this.mapCenter,
-      zoomControl: false,
-
-    };
-
     this.geolocation.getCurrentPosition().then((resp) => {
-      console.log(resp.coords.latitude)
       this.mapCenter = latLng(resp.coords.latitude, resp.coords.longitude);
+    }).catch(() => this.mapCenter = latLng(46.778690, 6.641400)).then(() => {
+      this.mapOptions = {
+        trackResize: false,
+        layers: [
+          tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            { maxZoom: 18 }
+          )
+        ],
+        zoom: 13,
+        center: this.mapCenter,
+        zoomControl: false,
+  
+      };
     })
 
   };

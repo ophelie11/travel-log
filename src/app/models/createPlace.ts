@@ -1,14 +1,13 @@
-import { LatLng } from "leaflet";
+import { Point } from 'geojson';
 
 /**
  * Represents a Place model as used throughout the application
  */
 export class CreatePlace {
   id?: string;
-  href: string
   name: string;
   description: string;
-  location: LatLng;
+  location: Point;
   tripId: string;
   pictureUrl: string;
   categorie: String;
@@ -19,10 +18,9 @@ export class CreatePlace {
  */
 export class RawPlace {
   id?: string;
-  href: string;
   name: string;
   description: string;
-  location: LatLng;
+  location: Point;
   tripId: string;
   pictureUrl: string;
 }
@@ -39,7 +37,6 @@ export function rawPlaceToPlace(raw: RawPlace): CreatePlace {
   const decodedData = JSON.parse(raw.description);
   return {
     id: raw.id,
-    href: raw.href,
     name: raw.name,
     description: decodedData.description,
     location: raw.location,
@@ -66,7 +63,6 @@ export function placeToRawPlace(place: CreatePlace): RawPlace {
   });
   return {
     id: place.id,
-    href: place.href,
     name: place.name,
     description: encodedData,
     location: place.location,

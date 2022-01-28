@@ -16,6 +16,7 @@ export class PlaceService {
   createPlace$(createPlace : CreatePlace): Observable<CreatePlace>{
     // Converts trip to create to an API compatible model
     const body = placeToRawPlace(createPlace);
+    console.log(body)
     return (
       this.http
         .post<RawPlace>(`${environment.apiUrl}/places`, body)

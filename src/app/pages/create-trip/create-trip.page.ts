@@ -22,7 +22,7 @@ export class CreateTripPage {
       description: undefined,
     };
   }
-
+  
    onSubmit(form: NgForm) {
     if (form.invalid) {
       return;
