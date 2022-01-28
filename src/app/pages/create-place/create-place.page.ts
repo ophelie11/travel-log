@@ -27,11 +27,13 @@ export class CreatePlacePage {
 
   constructor(private router: Router, private place : PlaceService, private pictureService : PictureService, private geolocation: Geolocation) {
     this.createPlace = {
+      href: undefined,
       name: undefined,
       description: undefined,
       location: this.currentPos,
       tripId: undefined,
       pictureUrl: undefined,
+      categorie: undefined,
     };
 
     this.geolocation.getCurrentPosition().then((resp) => {

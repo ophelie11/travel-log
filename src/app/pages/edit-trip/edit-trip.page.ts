@@ -31,7 +31,7 @@ export class EditTripPage {
     if (form.invalid) {
       return;
     }
-
+    
     this.trip.editTrip$(this.tripId, this.editTrip).subscribe({
       next: () => this.router.navigateByUrl("/"),
     });
