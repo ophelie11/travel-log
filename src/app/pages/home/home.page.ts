@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class HomePage implements ViewWillEnter {
 
   trips : Trip[];
+  searchingText: string;
+  userId: string;
 
   constructor(private trip : TripService, private router: Router) {
     this.trips = [];
@@ -33,5 +35,9 @@ export class HomePage implements ViewWillEnter {
 
   redirectMap(title: string) {
     this.router.navigateByUrl(`/map/${title}`);
+  }
+
+  search(){
+    this.trip.getTrip$();
   }
 }
