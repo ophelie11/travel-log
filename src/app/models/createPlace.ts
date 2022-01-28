@@ -9,7 +9,7 @@ export class CreatePlace {
   href: string
   name: string;
   description: string;
-  location: GeoJsonPoint;
+  location: LatLng;
   tripId: string;
   pictureUrl: string;
   categorie: String;
@@ -23,7 +23,7 @@ export class RawPlace {
   href: string;
   name: string;
   description: string;
-  location: GeoJsonPoint;
+  location: LatLng;
   tripId: string;
   pictureUrl: string;
 }
@@ -75,10 +75,3 @@ export function placeToRawPlace(place: CreatePlace): RawPlace {
     pictureUrl: place.pictureUrl,
   }; 
 }
-export type CreatePlace = {
-    name: string;
-    description: string;
-    location: LatLng;
-    tripId: string;
-    pictureUrl: string;
-};

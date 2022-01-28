@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CreatePlace } from '../models/createPlace';
-import { RawPlace, rawPlaceToPlace, Place, placeToRawPlace } from '../models/place';
+import { CreatePlace, RawPlace, rawPlaceToPlace, placeToRawPlace } from '../models/createPlace';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class PlaceService {
 
   constructor(private http: HttpClient) {}
 
-  createPlace$(createPlace : CreatePlace): Observable<Place>{
+  createPlace$(createPlace : CreatePlace): Observable<CreatePlace>{
     // Converts trip to create to an API compatible model
     const body = placeToRawPlace(createPlace);
     return (
@@ -24,7 +24,7 @@ export class PlaceService {
     );
   }
 
-  getPlace$(placeId: string): Observable<Place>{
+  getPlace$(placeId: string): Observable<CreatePlace>{
     return (
       this.http
         .get<RawPlace>(`${environment.apiUrl}/places/${placeId}`)
