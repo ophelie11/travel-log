@@ -30,7 +30,7 @@ export class CreatePlacePage {
       href: undefined,
       name: undefined,
       description: undefined,
-      location: this.currentPos,
+      location: undefined,
       tripId: undefined,
       pictureUrl: undefined,
       categorie: undefined,
@@ -38,7 +38,7 @@ export class CreatePlacePage {
 
     this.geolocation.getCurrentPosition().then((resp) => {
       console.log(resp.coords.latitude)
-      this.currentPos = latLng(resp.coords.latitude, resp.coords.longitude);
+      this.createPlace.location = latLng(resp.coords.latitude, resp.coords.longitude);
     })
 
     }
@@ -49,7 +49,8 @@ export class CreatePlacePage {
       return;
     }
 
-    console.log(this.currentPos);
+    console.log(this.createPlace);
+  
 
     this.createPlaceError = false;
 
