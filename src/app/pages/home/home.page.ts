@@ -1,6 +1,6 @@
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { ViewWillEnter } from '@ionic/angular';
-import { Trip } from 'src/app/models/Trip';
+import { Trip, } from 'src/app/models/Trip';
 import { TripService } from 'src/app/services/trip.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';

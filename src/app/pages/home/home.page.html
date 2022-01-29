@@ -1,7 +1,8 @@
 <ion-grid class="ion-margin">
     <ion-row>
         <ion-col>
-            <ion-searchbar class="searchbar" placeholder="Search" debounce="700" (ionChange)="search()" [(ngModel)]="searchingText"></ion-searchbar>
+            <ion-searchbar color="light" class="searchbar" placeholder="Search a trip" debounce="700"
+                (ionChange)="search()" [(ngModel)]="searchingText" showCancelButton="focus" animated></ion-searchbar>
         </ion-col>
     </ion-row>
     <ion-row>
@@ -21,10 +22,14 @@
             </h3>
         </ion-col>
         <ion-col size="2">
-            <ion-button [routerLink]="['/edit-trip', trip.id]"><ion-icon name="create"></ion-icon></ion-button>
+            <ion-button [routerLink]="['/edit-trip', trip.id]">
+                <ion-icon name="create"></ion-icon>
+            </ion-button>
         </ion-col>
         <ion-col size="2">
-            <ion-button (click)="deleteTrip(trip.id)"><ion-icon name="trash"></ion-icon></ion-button>
+            <ion-button (click)="deleteTrip(trip.id)">
+                <ion-icon name="trash"></ion-icon>
+            </ion-button>
         </ion-col>
     </ion-row>
 </ion-grid>
