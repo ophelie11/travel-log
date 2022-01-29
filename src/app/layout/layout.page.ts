@@ -6,6 +6,7 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { defaultIcon } from 'src/assets/icon/default-marker';
 import { CreatePlace } from '../models/createPlace';
 import { PlaceService } from '../services/place.service';
+import { TripService } from '../services/trip.service';
 
 declare type PageTab = {
   icon: string; // The icon of the tab in the tab bar
@@ -48,6 +49,7 @@ export class LayoutPage implements OnInit {
       this.isMapLayout = data?.setMapLayout ?? false;
     });
 
+
     this.place.getPlaces$().subscribe(places => {
       places.forEach(place => {
         this.onePlace.name = place.name;
@@ -58,7 +60,6 @@ export class LayoutPage implements OnInit {
       });
       
     })
-    console.log(this.onePlace)
 
     this.geolocation.getCurrentPosition().then((resp) => {
       this.mapCenter = latLng(resp.coords.latitude, resp.coords.longitude);

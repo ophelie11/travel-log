@@ -36,7 +36,6 @@ export class PlaceService {
   }
 
   getPlaces$(){
-    console.log(this.http.get<CreatePlace[]>(environment.apiUrl + "/places"))
     return this.http.get<CreatePlace[]>(environment.apiUrl + "/places")
   }
 
