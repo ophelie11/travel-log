@@ -15,8 +15,8 @@ export class TripService {
     return this.http.post(environment.apiUrl + "/trips", createTrip);
   }
 
-  getTrip$(){
-    return this.http.get<Trip[]>(environment.apiUrl + "/trips")
+  getTrip$(userId : string){
+    return this.http.get<Trip[]>(environment.apiUrl + "/trips?user=" + userId)
   }
 
   getOneTrip(id : string){

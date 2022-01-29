@@ -3,6 +3,8 @@ import { ViewWillEnter } from '@ionic/angular';
 import { Trip } from 'src/app/models/Trip';
 import { TripService } from 'src/app/services/trip.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/auth/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,14 +16,17 @@ export class HomePage implements ViewWillEnter {
   trips : Trip[];
   searchingText: string;
   userId: string;
+  userConnected : User;
   //tripId: string;
 
-  constructor(private trip : TripService, private router: Router) {
+  constructor(private trip : TripService, private router: Router, private auth: AuthService,) {
     this.trips = [];
+
+    this.auth.getUser$().subscribe(user => this.userConnected = user);
   }
 
   ionViewWillEnter(): void {
-    this.trip.getTrip$().subscribe((apiTrips)=>{
+    this.trip.getTrip$(this.userConnected.id).subscribe((apiTrips)=>{
       this.trips = apiTrips;
     });
   }
@@ -29,7 +34,6 @@ export class HomePage implements ViewWillEnter {
   deleteTrip(id : string): void {
     this.trip.deleteTrip$(id).subscribe(() => {
       const index = this.trips.findIndex((element) => element.id === id);
-      console.log(index);
       this.trips.splice(index, 1);
     });
   }
@@ -39,6 +43,6 @@ export class HomePage implements ViewWillEnter {
   }
 
   search(){
-    this.trip.getTrip$();
+    this.trip.getTrip$(this.userConnected.id);
   }
 }

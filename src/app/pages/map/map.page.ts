@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CreatePlace } from 'src/app/models/createPlace';
 import { CreateTrip } from 'src/app/models/createTrip';
 
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -15,6 +16,7 @@ export class MapPage implements OnInit {
  
   getTrip: CreateTrip;
   tripId: string;
+ 
 
   constructor(private trip : TripService, private router: Router, private route: ActivatedRoute) {
 
@@ -24,8 +26,6 @@ export class MapPage implements OnInit {
     };
     
     this.tripId= this.route.snapshot.params.id;
-
-    console.log(this.tripId);
 
     this.trip.getOneTrip(this.tripId).subscribe(trip => {
       this.getTrip.title = trip.title;

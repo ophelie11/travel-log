@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CreatePlace, RawPlace, rawPlaceToPlace, placeToRawPlace } from '../models/createPlace';
+import { CreateTrip } from '../models/createTrip';
 
 
 @Injectable({
@@ -32,6 +33,11 @@ export class PlaceService {
         // Converts the trip returned from the API to a model compatible with our application.
         .pipe(map(rawPlaceToPlace))
     );
+  }
+
+  getPlaces$(){
+    console.log(this.http.get<CreatePlace[]>(environment.apiUrl + "/places"))
+    return this.http.get<CreatePlace[]>(environment.apiUrl + "/places")
   }
 
   deletePlace$(id : string){

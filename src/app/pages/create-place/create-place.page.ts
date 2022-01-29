@@ -55,10 +55,10 @@ export class CreatePlacePage {
 
     this.createPlaceError = false;
 
-    console.log(this.createPlace);
-
     this.place.createPlace$(this.createPlace).subscribe({
-      next: () => this.router.navigateByUrl("/")
+      next: (tripId) => {
+        this.router.navigateByUrl(`/map/${tripId.tripId}`);
+      }
     });
   }
 
