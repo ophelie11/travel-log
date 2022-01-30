@@ -26,7 +26,7 @@ export class HomePage implements ViewWillEnter {
   }
 
   ionViewWillEnter(): void {
-    this.trip.getTrip$(this.userConnected.id).subscribe((apiTrips)=>{
+    this.trip.getTrip$(this.userConnected.id,this.searchingText).subscribe((apiTrips)=>{
       this.trips = apiTrips;
     });
   }

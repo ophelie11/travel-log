@@ -6,36 +6,23 @@
   </ion-row>
   <ion-row>
     <ion-col>
-      <form #editForm="ngForm" (submit)="onSubmit(editForm)">
+      <form #editUserForm="ngForm" (submit)="onSubmit(editUserForm)">
         <ion-list>
-          <!-- Username input -->
+
           <ion-item>
             <ion-label position="floating">Username</ion-label>
-            <ion-input inputmode="text" #username="ngModel" required="true" name="username"
-              [(ngModel)]="authRequest.username"></ion-input>
+            <ion-input inputmode="text" required="true" name="username" [(ngModel)]="editUser.name"> </ion-input>
           </ion-item>
-    
-          <!-- Error message displayed if the username is invalid -->
-          <ion-item lines="none" *ngIf="username.invalid && username.touched">
-            <ion-text color="danger">Username is required.</ion-text>
-          </ion-item>
-    
-          <!-- Password input -->
+
           <ion-item>
             <ion-label position="floating">Password</ion-label>
-            <ion-input inputmode="text" #password="ngModel" required="true" type="password" name="password"
-              [(ngModel)]="authRequest.password"></ion-input>
+            <ion-input inputmode="text" required="true" [(ngModel)]="editUser.password" name="password"></ion-input>
           </ion-item>
-    
-          <!-- Error message displayed if the password is invalid -->
-          <ion-item lines="none" *ngIf="password.invalid && password.touched">
-            <ion-text color="danger">Password is required.</ion-text>
-          </ion-item>
+
+          <ion-button type="submit" expand="block">Submit</ion-button>
+
         </ion-list>
-        <ion-button type="submit" color="succes" expand="block" >Edite profile</ion-button>
       </form>
     </ion-col>
-
   </ion-row>
-  
 </ion-grid>

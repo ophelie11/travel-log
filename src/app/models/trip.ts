@@ -1,11 +1,16 @@
 export type Trip = {
-    id: string;
-    href: string
-    title: string;
-    description: string;
-    placesCount: Number;
-    userId: String;
-    userHref: String;
-    createdAt: Date;
-    updatedAt: Date;  
-  };
+  "id": string,
+  "href": string,
+  "title": string,
+  "description": string,
+  "placesCount": number,
+  "userId": string,
+  "userHref": string,
+  "createdAt": Date,
+  "updatedAt": Date
+};
+
+export type CreateTrip = {
+  "title": string,
+  "description": string
+};

@@ -18,14 +18,24 @@
 
           <ion-item>
             <ion-label position="floating">Title</ion-label>
-            <ion-input inputmode="text" required="true" name="title" [(ngModel)]="createTrip.title"></ion-input>
+            <ion-input inputmode="text" required="true" name="titleInput" minlength="3" maxlength="100" [(ngModel)]="createTrip.title"></ion-input>
           </ion-item>
+          <!-- <ion-item lines="none" *ngIf="titleInput.invalid && title.touched">
+            <ion-text *ngIf="title.errors?.['required']" color="danger">Title is required.</ion-text>
+            <ion-text *ngIf="title.errors?.['minlength']" color="danger">Title must be at least 3 characters</ion-text>
+            <ion-text *ngIf="title.errors?.['maxlength']" color="danger">Title must be lower or equal to 100 characters</ion-text>
+          </ion-item> -->
 
           <ion-item>
             <ion-label position="floating">Description</ion-label>
-            <ion-textarea inputmode="text" required="true" name="description" [(ngModel)]="createTrip.description">
+            <ion-textarea inputmode="text" required="true" minlength="5" maxlength="50000"name="description" [(ngModel)]="createTrip.description">
             </ion-textarea>
           </ion-item>
+          <!-- <ion-item lines="none" *ngIf="description.invalid && description.touched">
+            <ion-text *ngIf="description.errors?.['required']" color="danger">Description is required.</ion-text>
+            <ion-text *ngIf="description.errors?.['minlength']" color="danger">Description must be at least 5 characters</ion-text>
+            <ion-text *ngIf="description.errors?.['maxlength']" color="danger">Description must be lower or equal to 50000 characters</ion-text>
+          </ion-item> -->
 
           <ion-button type="submit" expand="block">Submit</ion-button>
 

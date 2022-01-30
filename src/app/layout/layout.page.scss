@@ -1,10 +1,5 @@
-@font-face {   
-    font-family: 'Poppins';   
-    src: url('/travel-log/src/assets/font/Poppins-Regular.ttf');
-  }
-
-  ion-content{ 
-    font-family:Poppins !important;
+ion-content{ 
+    font-family: 'Gill sans' !important;
     pointer-events: none;
   }
 
@@ -39,6 +34,7 @@
     border-radius: 20px;
     height: 100px;
     pointer-events: all;
+    font-family: 'Gill sans';
 }
 
 .map-blur {

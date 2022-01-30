@@ -9,6 +9,7 @@
   <ion-row *ngIf="getTrip.title != ''">
     <ion-col class="ion-text-center">
       <h1>{{getTrip.title}}</h1>
+      <h2>{{getTrip.description}}</h2>
       <ion-button (click)="redirectCreatePlace(tripId)">Add a place</ion-button>
     </ion-col>
   </ion-row>

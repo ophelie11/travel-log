@@ -20,6 +20,10 @@ export class UserService {
     return this.http.get<User[]>(environment.apiUrl + "/users")
   }
 
+  getOneTrip(id : string){
+    return this.http.get<User>(environment.apiUrl + "/users/" + id)
+  }
+
   deleteUser$(id : string){
     return this.http.delete(environment.apiUrl + "/users/" + id)
   }

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { CreateTrip } from '../models/createTrip';
-import { Trip } from '../models/trip';
+import { CreateTrip, Trip } from '../models/createTrip';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,10 @@ export class TripService {
     return this.http.post(environment.apiUrl + "/trips", createTrip);
   }
 
-  getTrip$(userId : string){
-    return this.http.get<Trip[]>(environment.apiUrl + "/trips?user=" + userId)
+  getTrip$(userId : string, search: string = ""){
+    const API_URL = environment.apiUrl;
+    const url = search == "" ? `${API_URL}/trips?user=${userId}&sort=-createdAt&order=asc` : `${API_URL}/trips?user=${userId}&search=${search}&sort=-createdAt&order=asc`;
+    return this.http.get<Trip[]>(url)
   }
 
   getOneTrip(id : string){
